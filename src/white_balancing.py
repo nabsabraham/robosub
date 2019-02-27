@@ -1,3 +1,4 @@
+# Traditional white balancing
 # whitebalancing: https://stackoverflow.com/questions/46390779/automatic-white-balancing-with-grayworld-assumption
 import cv2 
 import numpy as np

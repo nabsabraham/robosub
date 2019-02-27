@@ -12,7 +12,7 @@ def white_balance(img):
     result = cv2.cvtColor(result, cv2.COLOR_LAB2BGR)
     return result
 
-def clahe(img, gridsize=8)
+def clahe(img, gridsize=8):
     lab = cv2.cvtColor(img, cv2.COLOR_BGR2LAB)
     lab_planes = cv2.split(lab)
     clahe = cv2.createCLAHE(clipLimit=2.0,tileGridSize=(gridsize,gridsize))
@@ -55,3 +55,9 @@ def whitebalance(img, scale=2):
     out = gamma + sharp
     out = (out.astype(float)/np.max(out))
     return np.uint8(out*255)
+
+def getContours(binary_image):      
+    _, contours, hierarchy = cv2.findContours(binary_image, 
+                                            cv2.RETR_EXTERNAL,
+	                                        cv2.CHAIN_APPROX_SIMPLE)
+    return contours

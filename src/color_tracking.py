@@ -1,6 +1,6 @@
 import cv2 
 import numpy as np
-from utils import whitebalance, clahe
+from utils import whitebalance, clahe, getContours
 
 #device = cv2.VideoCapture(0)	
 device = cv2.VideoCapture('video/gate3.mp4')
@@ -30,6 +30,8 @@ while True:
     out = np.hstack((frame, frame_corrected))
     masks = np.hstack((mask, mask_c))
 
+    contours = getContours(mask)
+    print(contours)
     cv2.imshow('Results', out)
     cv2.imshow("Masked", masks)
        
