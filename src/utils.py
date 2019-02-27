@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt 
 
+epsilon = 1e-7
 
 def white_balance(img):
     result = cv2.cvtColor(img, cv2.COLOR_BGR2LAB)
@@ -61,3 +62,39 @@ def getContours(binary_image):
                                             cv2.RETR_EXTERNAL,
 	                                        cv2.CHAIN_APPROX_SIMPLE)
     return contours
+
+def drawContours(img, contours):
+    # with each contour, draw boundingRect in green
+    # a minAreaRect in red and
+    # a minEnclosingCircle in blue
+
+    for c in contours:
+        # get the bounding rect
+        	# compute the center of the contour
+        M = cv2.moments(c)
+        cX = int((M["m10"] + epsilon)/ (M["m00"]+epsilon))
+        cY = int((M["m01"] + epsilon) / (M["m00"]+epsilon))
+
+        x, y, w, h = cv2.boundingRect(c)
+        cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 2)
+        cv2.circle(img, (cX, cY), 7, (0, 0, 0), -1)
+        text = "center: " + str(cX) + "," + str(cY) 
+        cv2.putText(img, text, (cX - 20, cY - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+
+        '''
+        # get the min area rect
+        rect = cv2.minAreaRect(c)
+        box = cv2.boxPoints(rect)
+        # convert all coordinates floating point values to int
+        box = np.int0(box)
+        # draw a red 'nghien' rectangle
+        cv2.drawContours(img, [box], 0, (0, 0, 255))
+    
+        # finally, get the min enclosing circle
+        (x, y), radius = cv2.minEnclosingCircle(c)
+        # convert all values to int
+        center = (int(x), int(y))
+        radius = int(radius)
+        # and draw the circle in blue
+        img = cv2.circle(img, center, radius, (255, 0, 0), 2)
+        '''

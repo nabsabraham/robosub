@@ -1,18 +1,9 @@
 import cv2 
 import numpy as np
-from utils import whitebalance, clahe, getContours
+from utils import whitebalance, clahe, getContours, drawContours
 
 #device = cv2.VideoCapture(0)	
-device = cv2.VideoCapture('video/gate3.mp4')
-
-def clahe(img):
-    lab = cv2.cvtColor(img, cv2.COLOR_BGR2LAB)
-    lab_planes = cv2.split(lab)
-    clahe = cv2.createCLAHE(clipLimit=2.0,tileGridSize=(3,3))
-    lab_planes[0] = clahe.apply(lab_planes[0])
-    lab = cv2.merge(lab_planes)
-    bgr = cv2.cvtColor(lab, cv2.COLOR_LAB2BGR)
-    return bgr
+device = cv2.VideoCapture('video/gate2.mp4')
 
 while True:
     ret, frame = device.read()
@@ -31,9 +22,13 @@ while True:
     masks = np.hstack((mask, mask_c))
 
     contours = getContours(mask)
-    print(contours)
-    cv2.imshow('Results', out)
-    cv2.imshow("Masked", masks)
+    if len(contours) > 0: 
+        drawContours(frame, contours)
+
+    cv2.imshow('Original', frame)
+   
+    #cv2.imshow('Results', out)
+    #cv2.imshow("Masked", masks)
        
     # escape key
     if cv2.waitKey(1) == 27:    
