@@ -1,0 +1,26 @@
+<annotation>
+  <folder>input/DSCF0678_Trim_mp4</folder>
+  <filename>DSCF0678_Trim_mp4_141.jpg</filename>
+  <path>/Users/hamzamahdi/Desktop/sub_ml/OpenLabeling/main/input/DSCF0678_Trim_mp4/DSCF0678_Trim_mp4_141.jpg</path>
+  <source>
+    <database>Unknown</database>
+  </source>
+  <size>
+    <width>640</width>
+    <height>480</height>
+    <depth>3</depth>
+  </size>
+  <segmented>0</segmented>
+  <object>
+    <name>gate</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>114</xmin>
+      <ymin>83</ymin>
+      <xmax>579</xmax>
+      <ymax>241</ymax>
+    </bndbox>
+  </object>
+</annotation>

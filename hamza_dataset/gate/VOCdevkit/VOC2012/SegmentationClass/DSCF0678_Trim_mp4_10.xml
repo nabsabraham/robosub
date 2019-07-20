@@ -1,0 +1,14 @@
+<annotation>
+  <folder>input/DSCF0678_Trim_mp4</folder>
+  <filename>DSCF0678_Trim_mp4_10.jpg</filename>
+  <path>/Users/hamzamahdi/Desktop/sub_ml/OpenLabeling/main/input/DSCF0678_Trim_mp4/DSCF0678_Trim_mp4_10.jpg</path>
+  <source>
+    <database>Unknown</database>
+  </source>
+  <size>
+    <width>640</width>
+    <height>480</height>
+    <depth>3</depth>
+  </size>
+  <segmented>0</segmented>
+</annotation>
